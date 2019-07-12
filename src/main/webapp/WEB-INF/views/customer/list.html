@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Customer</title>
+</head>
+<body>
+    <center>
+        <fieldset>
+            <legend><h1>List Customer</h1></legend>
+            <a th:href="@{/create-customer}">Create Customer</a>
+            <table border="1px" style="border-collapse: collapse">
+                <tr>
+                    <th>ID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Province</th>
+                    <th colspan="2">More Option</th>
+                </tr>
+                <div th:each="customer, iterStat : ${customers}">
+                    <tr>
+                        <td th:text="${customer.id}"></td>
+                        <td th:text="${customer.firstName}"></td>
+                        <td th:text="${customer.lastName}"></td>
+                        <td th:text="${customer.province.getName()}"></td>
+                        <td><a th:href="@{edit/__${customer.id}__}">Edit</a></td>
+                        <td><a th:href="@{delete/__${customer.id}__}">Delete</a></td>
+                    </tr>
+                </div>
+            </table>
+        </fieldset>
+    </center>
+</body>
+</html>
